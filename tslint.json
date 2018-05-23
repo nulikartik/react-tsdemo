@@ -6,5 +6,9 @@
       "node_modules/**/*.ts"
     ],
     "ordered-imports": false
+  },
+  "rules": {
+    "no-var-requires": false,
+    "no-console": false
   }
 }
