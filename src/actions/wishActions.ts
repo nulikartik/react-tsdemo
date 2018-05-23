@@ -1,9 +1,9 @@
 import { SET_WISHES } from './actions_list';
 
-export const setWishes =  function(data:string) {
+export const setWishes = (data:string) => {
   console.log(data);
   return {
-    type: SET_WISHES,
-    payload: data
+    payload: data,
+    type: SET_WISHES
   };
-} 
+}
