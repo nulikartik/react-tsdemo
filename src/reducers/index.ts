@@ -1,11 +1,12 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import reduxPromise from 'redux-promise';
 import WishReducer from './wishes';
-
 
 const rootReducer = combineReducers({
   wishes: WishReducer
 });
 
-const store = createStore(rootReducer);
-console.log(store.getState());
-export default store;
+// console.log(store.getState());
+const createStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore);
+
+export default createStoreWithMiddleware(rootReducer);

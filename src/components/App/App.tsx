@@ -1,21 +1,18 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
-import logo from '../../logo.svg';
 import Link from '../../ui-fabric/Link';
+import Wish from '../Wish/Wish';
 import './App.css';
-
 
 class App extends React.Component {
   public render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">
             <FormattedMessage id="app.title"
-              defaultMessage="Welcome to {what}"
-              description="Default Welcome header on app main page"
-              values={{ what: 'react-intl' }} />
+              defaultMessage="WishCard"
+              description="Default Welcome header on app main page" />
           </h1>
         </header>
         <p className="App-intro">
@@ -24,6 +21,7 @@ class App extends React.Component {
             description="Text on main page" />
         </p>
         <Link href="http://google.com" target="_blank">Wish</Link>
+        <Wish />
       </div>
     );
   }
