@@ -1,26 +1,56 @@
 import * as React from 'react';
-import { FormattedMessage } from 'react-intl';
-import { GET_WISHES } from '../../services/wish-service/index';
-import Link from '../../ui-fabric/Link';
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import { setWishes } from '../../actions/wishActions';
 import './Wish.css';
 
+interface IWishState {
+    wishList: IWish[]
+}
+interface IWishProps {
+    setWishes: () => void
+    wishList: IWish[]
+}
 
-class Wish extends React.Component {
+class Wish extends React.Component<IWishProps, IWishState> {
+
+    constructor(props: IWishProps) {
+        super(props);
+        this.rendWishes = this.rendWishes.bind(this);
+    }
 
     public componentDidMount() {
-        console.log(GET_WISHES());
+        this.props.setWishes();
+    }
+
+    public rendWishes() {
+        return this.props.wishList.map((wish: IWish) => {
+            return (
+                <div className="wishItem" key={wish.id}>
+                    <img src={wish.badge_Path} />
+                    {wish.name}
+                </div>
+            );
+        });
     }
 
     public render() {
         return (
             <div className="App">
-                <FormattedMessage id="app.intro"
-                    defaultMessage="Default To get started, edit <code>src/App.js</code> and save to reload."
-                    description="Text on main page" />
-                <Link href="http://google.com" target="_blank">Wish</Link>
+                {this.rendWishes()}
             </div>
         );
     }
 }
 
-export default Wish;
+function mapStateToProps(state: IState) {
+    return {
+        wishList: state.wishes
+    }
+}
+
+function mapDispatchToProps(dispatch: any ) {
+    return bindActionCreators({ setWishes }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Wish);

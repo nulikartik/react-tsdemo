@@ -19,4 +19,3 @@ export function GETC_ASSETS_BY_TAGS(ids:number[]) {
 export function GETC_SMSGS_BY_TAGS(ids:number[]) {
     return GET_SMSGS_BY_TAGS + ids.join("|");
 }
-

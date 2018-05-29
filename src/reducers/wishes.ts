@@ -1,14 +1,16 @@
+import { AxiosResponse } from 'axios';
 import { SET_WISHES } from '../actions/actions_list';
 
 interface IAction {
     type: string,
-    payload: IWish 
+    payload: AxiosResponse<IWish[]>
 }
 
 export default function WishReducer(state: IWish[] , action: IAction ) {
     switch(action.type){
         case SET_WISHES:
-            return [...state, action.payload ];
+            console.log("action.payload", action.payload.data);
+            return [...state, ...action.payload.data ];
         default:
             return state || [];
     }
