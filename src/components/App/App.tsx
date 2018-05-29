@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
-import Link from '../../ui-fabric/Link';
+import CLink from '../../ui-fabric/CLink';
 import Wish from '../Wish/Wish';
 import './App.css';
 
@@ -20,7 +20,7 @@ class App extends React.Component {
             defaultMessage="Default To get started, edit <code>src/App.js</code> and save to reload."
             description="Text on main page" />
         </p>
-        <Link href="http://google.com" target="_blank">Wish</Link>
+        <CLink href="/templates">Wish</CLink>
         <Wish />
       </div>
     );

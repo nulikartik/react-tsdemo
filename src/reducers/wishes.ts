@@ -10,7 +10,7 @@ export default function WishReducer(state: IWish[] , action: IAction ) {
     switch(action.type){
         case SET_WISHES:
             console.log("action.payload", action.payload.data);
-            return [...state, ...action.payload.data ];
+            return [...action.payload.data ];
         default:
             return state || [];
     }
