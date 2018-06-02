@@ -1,34 +1,44 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from "redux";
-// import { setWishes } from '../../stateMangement/actions/wishActions';
-import './Wish.css';
+import { match } from "react-router";
+import { bindActionCreators } from "redux";
+import { setSelectedWish } from '../../stateManagement/actions/selectedWish';
+import { setTemplates } from '../../stateManagement/actions/templateActions';
+import './Template.css';
 
-interface ITemplateState {
-    wishList: IWish[]
-}
-interface IWishProps {
-    setWishes: () => void
-    wishList: IWish[]
+interface IRouteParams {
+    wishslug: string;
 }
 
-class Template extends React.Component<IWishProps, ITemplateState> {
+interface ITemplateProps {
+    setTemplates: (wishId: number) => void;
+    setSelectedWish: (wishId: number) => void;
+    selectedWish: IWish;
+    templateList: ITemplate[];
+    match: match<IRouteParams>
+}
 
-    constructor(props: IWishProps) {
+class Template extends React.Component<ITemplateProps> {
+    constructor(props: ITemplateProps) {
         super(props);
-        this.rendWishes = this.rendWishes.bind(this);
+        console.log(props);
+        this.rendTemplates = this.rendTemplates.bind(this);
+    }
+
+    public componentWillMount() {
+        this.props.setSelectedWish(Number(this.props.match.params.wishslug));
     }
 
     public componentDidMount() {
-        this.props.setWishes();
+        this.props.setTemplates(Number(this.props.match.params.wishslug));
     }
 
-    public rendWishes() {
-        return this.props.wishList.map((wish: IWish) => {
+    public rendTemplates() {
+        return this.props.templateList.map((template: ITemplate) => {
             return (
-                <div className="wishItem" key={wish.id}>
-                    <img src={wish.badge_Path} />
-                    {wish.name}
+                <div className="templateItem" key={template.id}>
+                    {/* <img src={template.badge_Path} /> */}
+                    {template.name}
                 </div>
             );
         });
@@ -37,7 +47,8 @@ class Template extends React.Component<IWishProps, ITemplateState> {
     public render() {
         return (
             <div className="App">
-                {this.rendWishes()}
+                {this.props.selectedWish?this.props.selectedWish.name:null}
+                {this.rendTemplates()}
             </div>
         );
     }
@@ -45,12 +56,13 @@ class Template extends React.Component<IWishProps, ITemplateState> {
 
 function mapStateToProps(state: IState) {
     return {
-        wishList: state.wishes
+        selectedWish: state.selectedWish,
+        templateList: state.templates
     }
 }
 
 function mapDispatchToProps(dispatch: any ) {
-    // return bindActionCreators({ setWishes }, dispatch);
+    return bindActionCreators({ setSelectedWish, setTemplates }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Template);

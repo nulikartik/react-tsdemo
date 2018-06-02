@@ -4,6 +4,7 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import App from './components/App/App';
+import Template from './components/Template/Template';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import store from './stateManagement/reducers/index';
@@ -21,22 +22,13 @@ const language = navigator.language.split(/[-_]/)[0];
 console.log(language);
 addLocaleData([...en, ...de]);
 
-class Hello extends React.Component {
-  public constructor(props:JSON){
-    super(props);
-    console.log(props);
-  }
-
-  public render() { return <div> Hello </div> }
-}
-
 ReactDOM.render(
   <IntlProvider locale={language} messages={messages[language]}>
     <Provider store={store}  >
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" component={App}  />
-          <Route path="/templates/:wishslug" component={Hello}  />
+          <Route path="/templates/:wishslug" component={Template}  />
         </div>
       </BrowserRouter>
     </Provider>

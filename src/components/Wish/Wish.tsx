@@ -6,15 +6,12 @@ import { setWishes } from '../../stateManagement/actions/wishActions';
 import { CLink } from '../../ui-fabric/index';
 import './Wish.css';
 
-interface IWishState {
-    wishList: IWish[]
-}
 interface IWishProps {
     setWishes: () => void
     wishList: IWish[]
 }
 
-class Wish extends React.Component<IWishProps, IWishState> {
+class Wish extends React.Component<IWishProps> {
 
     constructor(props: IWishProps) {
         super(props);

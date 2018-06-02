@@ -1,4 +1,5 @@
 interface IState {
     wishes : IWish[],
-    selectedWish : IWish
+    selectedWish : IWish,
+    templates: ITemplate[]
 }

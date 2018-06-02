@@ -1,2 +1,3 @@
 export const SET_WISHES = 'SET_WISHES';
 export const SET_TEMPLATES = 'SET_TEMPLATES';
+export const SET_SELECTED_WISH = 'SET_SELECTED_WISH';

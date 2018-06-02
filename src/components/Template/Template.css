@@ -1,6 +1,9 @@
-.wishItem {
+.templateItem {
   width: 150px;
-  display: inline-block; }
-  .wishItem img {
-    max-width: 100%;
-    max-height: 100px; }
+  display: inline-block; 
+}
+
+.templateItem img {
+  max-width: 100%;
+  max-height: 100px; 
+}
