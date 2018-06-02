@@ -1,5 +1,5 @@
-import { fetchWishes } from '../services/wishCard/index';
-import { SET_WISHES } from './actions_list';
+import { fetchWishes } from '../../services/wishCard/index';
+import { SET_WISHES } from './action_list';
 
 export const setWishes = () => {
   const data = fetchWishes();  

@@ -8,4 +8,4 @@ class CLink extends React.Component<any,any> {
   }
 }
 
-export default CLink;
+export const cLink =  CLink;

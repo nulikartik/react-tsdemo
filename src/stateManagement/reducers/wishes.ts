@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { SET_WISHES } from '../actions/actions_list';
+import { SET_WISHES } from '../actions/action_list';
 
 interface IAction {
     type: string,

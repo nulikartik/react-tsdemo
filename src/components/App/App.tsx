@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FormattedMessage } from 'react-intl';
-import CLink from '../../ui-fabric/CLink/index';
+import { CLink } from '../../ui-fabric/index';
 import Wish from '../Wish/Wish';
 import './App.css';
 

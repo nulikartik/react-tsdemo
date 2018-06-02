@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { setWishes } from '../../actions/wishActions';
+import { setWishes } from '../../stateManagement/actions/wishActions';
 import { WishCard } from '../../presentationLayers/index'; 
-import CLink from '../../ui-fabric/CLink/index';
+import { CLink } from '../../ui-fabric/index';
 import './Wish.css';
 
 interface IWishState {

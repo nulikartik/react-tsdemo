@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import App from './components/App/App';
 import './index.css';
-import store from './reducers/index';
+import store from './stateManagement/reducers/index';
 import registerServiceWorker from './registerServiceWorker';
 import messages_de from "./translations/de.json";
 import messages_en from "./translations/en.json";
