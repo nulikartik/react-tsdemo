@@ -22,6 +22,11 @@ console.log(language);
 addLocaleData([...en, ...de]);
 
 class Hello extends React.Component {
+  public constructor(props:JSON){
+    super(props);
+    console.log(props);
+  }
+
   public render() { return <div> Hello </div> }
 }
 
@@ -31,7 +36,7 @@ ReactDOM.render(
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" component={App}  />
-          <Route path="/templates" component={Hello}  />
+          <Route path="/templates/:wishslug" component={Hello}  />
         </div>
       </BrowserRouter>
     </Provider>

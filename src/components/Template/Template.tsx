@@ -2,11 +2,9 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { setWishes } from '../../actions/wishActions';
-import { WishCard } from '../../presentationLayers/index'; 
-import CLink from '../../ui-fabric/CLink/index';
 import './Wish.css';
 
-interface IWishState {
+interface ITemplateState {
     wishList: IWish[]
 }
 interface IWishProps {
@@ -14,7 +12,7 @@ interface IWishProps {
     wishList: IWish[]
 }
 
-class Wish extends React.Component<IWishProps, IWishState> {
+class Template extends React.Component<IWishProps, ITemplateState> {
 
     constructor(props: IWishProps) {
         super(props);
@@ -26,11 +24,12 @@ class Wish extends React.Component<IWishProps, IWishState> {
     }
 
     public rendWishes() {
-        return this.props.wishList.filter(wish => wish.isActive).map((wish: IWish) => {
+        return this.props.wishList.map((wish: IWish) => {
             return (
-                <CLink key={wish.id} href={ "templates/"+wish.id } >
-                    <WishCard image={wish.badge_Path} title={wish.name} />
-                </CLink>
+                <div className="wishItem" key={wish.id}>
+                    <img src={wish.badge_Path} />
+                    {wish.name}
+                </div>
             );
         });
     }
@@ -54,4 +53,4 @@ function mapDispatchToProps(dispatch: any ) {
     return bindActionCreators({ setWishes }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Wish);
+export default connect(mapStateToProps, mapDispatchToProps)(Template);

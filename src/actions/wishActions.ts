@@ -1,4 +1,4 @@
-import { fetchWishes } from '../services/wish-service/index';
+import { fetchWishes } from '../services/wishCard/index';
 import { SET_WISHES } from './actions_list';
 
 export const setWishes = () => {

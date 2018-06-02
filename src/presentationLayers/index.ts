@@ -1,0 +1,1 @@
+export { wishCard as WishCard }  from './WishCard/index';
