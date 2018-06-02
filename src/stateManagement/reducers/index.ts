@@ -1,11 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import reduxPromise from 'redux-promise';
-import WishReducer from './wishes';
 import TemplateReducer from './templates';
+import WishReducer from './wishes';
 
 const rootReducer = combineReducers({
-  wishes: WishReducer,
-  templates: TemplateReducer
+  templates: TemplateReducer,
+  wishes: WishReducer
 });
 
 // console.log(store.getState());

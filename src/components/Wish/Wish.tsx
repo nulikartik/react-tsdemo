@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { setWishes } from '../../stateManagement/actions/wishActions';
 import { WishCard } from '../../presentationLayers/index'; 
+import { setWishes } from '../../stateManagement/actions/wishActions';
 import { CLink } from '../../ui-fabric/index';
 import './Wish.css';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from "redux";
-import { setWishes } from '../../actions/wishActions';
+// import { bindActionCreators } from "redux";
+// import { setWishes } from '../../stateMangement/actions/wishActions';
 import './Wish.css';
 
 interface ITemplateState {
@@ -50,7 +50,7 @@ function mapStateToProps(state: IState) {
 }
 
 function mapDispatchToProps(dispatch: any ) {
-    return bindActionCreators({ setWishes }, dispatch);
+    // return bindActionCreators({ setWishes }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Template);
