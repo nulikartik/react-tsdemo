@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
-import { WishCard } from '../../presentationLayers/index'; 
+import { WishCard } from '../../presentationLayers/index';
 import { setWishes } from '../../stateManagement/actions/wishActions';
 import { CLink } from '../../ui-fabric/index';
 import './Wish.css';
@@ -25,9 +25,11 @@ class Wish extends React.Component<IWishProps> {
     public rendWishes() {
         return this.props.wishList.filter(wish => wish.isActive).map((wish: IWish) => {
             return (
-                <CLink key={wish.id} href={ "templates/"+wish.id } >
-                    <WishCard image={wish.badge_Path} title={wish.name} />
-                </CLink>
+                <div className="wishItem" key={wish.id}>
+                    <CLink href={"templates/" + wish.id} >
+                        <WishCard image={wish.badge_Path} title={wish.name} />
+                    </CLink>
+                </div>
             );
         });
     }
@@ -47,7 +49,7 @@ function mapStateToProps(state: IState) {
     }
 }
 
-function mapDispatchToProps(dispatch: any ) {
+function mapDispatchToProps(dispatch: any) {
     return bindActionCreators({ setWishes }, dispatch);
 }
 

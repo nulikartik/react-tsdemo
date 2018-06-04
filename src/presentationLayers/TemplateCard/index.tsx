@@ -22,4 +22,4 @@ class TemplateCard extends React.Component<ITemplateCardProps> {
     }
 }
 
-export const templateCard = TemplateCard;
+export default TemplateCard;

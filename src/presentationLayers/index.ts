@@ -1,2 +1,2 @@
-export { wishCard as WishCard }  from './WishCard/index';
-export { templateCard as TemplateCard }  from './TemplateCard/index';
+export { default as WishCard }  from './WishCard/index';
+export { default as TemplateCard }  from './TemplateCard/index';
