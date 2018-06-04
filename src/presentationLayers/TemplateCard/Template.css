@@ -1,0 +1,9 @@
+.WishCard {
+  width: 150px;
+  display: inline-block; }
+  .WishCard img {
+    max-width: 100%;
+    max-height: 100px; }
+  .WishCard span {
+    text-decoration: none;
+    color: #000000; }

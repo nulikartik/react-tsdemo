@@ -15,13 +15,13 @@ interface ITemplateState{
 }
 
 interface IField{
-    "id": number,
-    "fId": number,
-    "type" : string,
-    "label": string,
-    "placeholder": string,
-    "value": string,
-    "tagList": ITag[]
+    "id"?: number,
+    "fId"?: number,
+    "type"? : string,
+    "label"?: string,
+    "placeholder"?: string,
+    "value"?: string,
+    "tagList"?: ITag[]
 }
 
 interface ITag{

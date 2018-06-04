@@ -4,6 +4,7 @@ import { addLocaleData, IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import App from './components/App/App';
+import Create from './components/Create/Create';
 import Template from './components/Template/Template';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
@@ -28,7 +29,8 @@ ReactDOM.render(
       <BrowserRouter>
         <div>
           <Route exact={true} path="/" component={App}  />
-          <Route path="/templates/:wishslug" component={Template}  />
+          <Route path="/templates/:wishSlug" component={Template}  />
+          <Route path="/wish/create" component={Create}  />
         </div>
       </BrowserRouter>
     </Provider>

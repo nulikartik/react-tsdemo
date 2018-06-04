@@ -2,12 +2,15 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { match } from "react-router";
 import { bindActionCreators } from "redux";
+import { TemplateCard } from '../../presentationLayers/index';
 import { setSelectedWish } from '../../stateManagement/actions/selectedWish';
 import { setTemplates } from '../../stateManagement/actions/templateActions';
+import { CLink } from '../../ui-fabric/index';
 import './Template.css';
 
+
 interface IRouteParams {
-    wishslug: string;
+    wishSlug: string;
 }
 
 interface ITemplateProps {
@@ -26,20 +29,19 @@ class Template extends React.Component<ITemplateProps> {
     }
 
     public componentWillMount() {
-        this.props.setSelectedWish(Number(this.props.match.params.wishslug));
+        this.props.setSelectedWish(Number(this.props.match.params.wishSlug));
     }
 
     public componentDidMount() {
-        this.props.setTemplates(Number(this.props.match.params.wishslug));
+        this.props.setTemplates(Number(this.props.match.params.wishSlug));
     }
 
     public rendTemplates() {
         return this.props.templateList.map((template: ITemplate) => {
             return (
-                <div className="templateItem" key={template.id}>
-                    {/* <img src={template.badge_Path} /> */}
-                    {template.name}
-                </div>
+                <CLink href={ "/wish/create?template=" + template.id } key={template.id} >
+                    <TemplateCard title={template.name} image={template.slug} />
+                </CLink>
             );
         });
     }
