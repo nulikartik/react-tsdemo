@@ -26,7 +26,7 @@ class TInput extends React.Component<any> {
       return ( 
         <div className="form-group">
           <label style={label} > { this.props.data.label } </label>
-          <textarea className="form-control" value={this.props.data.value || " "} />
+          <textarea className="form-control" onChange={this.props.onChange} data-id={this.props.data.id} value={this.props.data.value || " "} />
         </div>
       )
   }

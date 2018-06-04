@@ -21,13 +21,15 @@ interface ICreateProps {
 
 interface ICreateSate {
     formData: IField[];
+    template: string;
 }
 
 class Create extends React.Component<ICreateProps, ICreateSate> {
     constructor(props: ICreateProps) {
         super(props);
         this.state = {
-            formData: []
+            formData: [],
+            template: ""
         };
         console.log("Create props", props);
         this.handleDInput = this.handleDInput.bind(this);
@@ -37,12 +39,17 @@ class Create extends React.Component<ICreateProps, ICreateSate> {
     public componentWillMount() {
         const params = new URLSearchParams(this.props.location.search);
         this.props.setSelectedTemplate(Number(params.get("template")));
-        // this.props.setTemplates(Number(this.props.match.params.templateSlug));
-        this.setState({ formData: this.props.selectedTemplate.fields });
     }
 
-    public componentDidMount(){
-        // this.setState({ formData: this.props.selectedTemplate.fields });
+    public componentWillUnmount(){
+        this.props.setSelectedTemplate(-1);
+    }
+
+    public componentWillReceiveProps(nextProps: ICreateProps) {
+        if (this.props.selectedTemplate !== null && this.props.selectedTemplate.slug !== nextProps.selectedTemplate.slug) {
+            console.log("componentWillReceiveProps", nextProps);
+            this.setState({ formData: nextProps.selectedTemplate.fields, template: nextProps.selectedTemplate.templateCode });
+        }
     }
 
     public componentDidUpdate() {
@@ -51,7 +58,7 @@ class Create extends React.Component<ICreateProps, ICreateSate> {
 
     public handleDInput(event: any) {
         console.log("event.target", event.target);
-        const id:string = event.target.getAttribute("data-id");
+        const id: string = event.target.getAttribute("data-id");
         const newFormData = this.state.formData.map((form) => {
             if (form.id === Number(id)) {
                 form.value = event.target.value;
@@ -83,29 +90,29 @@ class Create extends React.Component<ICreateProps, ICreateSate> {
     }
 
     public render() {
-        // if(this.props.selectedTemplate.templateCode !== undefined) {
-            return (
-                <div className="App">
-                    {/* {this.props.selectedWish ? this.props.selectedWish.name : null}
+        if(this.props.selectedTemplate.templateCode !== undefined) {
+        return (
+            <div className="App">
+                {/* {this.props.selectedWish ? this.props.selectedWish.name : null}
                     <span> {this.props.selectedTemplate.name} </span>
                     <ParseHTML data={this.props.selectedTemplate.fields} template={unescape(this.props.selectedTemplate.templateCode)} /> */}
-                    {/* <span> <div dangerouslySetInnerHTML={this.createMarkup(unescape(this.props.selectedTemplate.templateCode))} /> </span>  */}
+                {/* <span> <div dangerouslySetInnerHTML={this.createMarkup(unescape(this.props.selectedTemplate.templateCode))} /> </span>  */}
 
-                    {/* {this.rendTemplates()} */}
-                    <div className="row">
-                        <div className="col-md-8">
-                            <ParseHTML data={this.state.formData} template={unescape(this.props.selectedTemplate.templateCode)} />
-                        </div>
-                        {<div className="col-md-4">
-                            {this.rendToDoForm()}
-                        </div>}
+                {/* {this.rendTemplates()} */}
+                <div className="row">
+                    <div className="col-md-8">
+                        <ParseHTML data={this.state.formData} template={unescape(this.state.template)} />
                     </div>
+                    {<div className="col-md-4">
+                        {this.rendToDoForm()}
+                    </div>}
                 </div>
-            );
-        // }
-        // else {
-        //     return (<div />);
-        // }
+            </div>
+        );
+        }
+        else {
+            return (<div />);
+        }
     }
 }
 
