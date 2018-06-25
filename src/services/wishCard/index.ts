@@ -6,5 +6,9 @@ export const fetchTemplates = (id:number) =>
         WishAPIs.GETC_TEMPLATES_BY_WISHID(id) !== "INVALID" ? 
                 axios.get(WishAPIs.GETC_TEMPLATES_BY_WISHID(id)) :
                     "INVALID" ;
+export const fetchWishById = (id: number) => 
+        WishAPIs.GETC_WISH_BY_ID(id) !== "INVALID" ?
+                axios.get(WishAPIs.GETC_WISH_BY_ID(id)) :
+                        "INVALID" ;
 
 
