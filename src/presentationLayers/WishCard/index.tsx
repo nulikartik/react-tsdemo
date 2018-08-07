@@ -18,10 +18,6 @@ class WishCard extends React.Component<IWishCardProps> {
             <div className="WishCard">
                 <UICard image={this.props.image} title={this.props.title} alt={this.props.title} />
             </div>
-            // <div className="WishCard">
-            //     <img src={this.props.image} />
-            //     <span>{this.props.title}</span>
-            // </div>
         );
     }
 }

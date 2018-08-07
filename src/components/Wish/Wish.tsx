@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { WishCard } from '../../presentationLayers/index';
 import { setWishes } from '../../stateManagement/actions/wishActions';
-import { CLink } from '../../ui-fabric/index';
+import { CLink, UILoadingSpinner } from '../../ui-fabric/index';
 import './Wish.css';
 
 interface IWishProps {
@@ -19,7 +19,13 @@ class Wish extends React.Component<IWishProps> {
     }
 
     public componentDidMount() {
+        console.log("beforeCalling", this.props);
         this.props.setWishes();
+        console.log("afterCalling", this.props);
+    }
+
+    public componentWillReceiveProps(nextProps: IWishProps) {
+        console.log("willReceiveProps", this.props, nextProps);
     }
 
     public rendWishes() {
@@ -36,9 +42,11 @@ class Wish extends React.Component<IWishProps> {
 
     public render() {
         return (
-            <div className="App">
-                {this.rendWishes()}
-            </div>
+            <UILoadingSpinner isLoading={false} >
+                <div className="App">
+                    {this.rendWishes()}
+                </div>
+            </UILoadingSpinner>
         );
     }
 }
